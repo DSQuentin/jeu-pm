@@ -5,7 +5,7 @@ function Home() {
   return (
     <div>
       <h1>Bienvenue !</h1>
-      <Link to="/menu">
+      <Link to="/team-selection">
         <button>Commencer</button>
       </Link>
     </div>
