@@ -9,16 +9,15 @@ import TeamSelectionPage from './components/TeamSelection.jsx';
 
 
 function App() {
-
     const [teamNames, setTeamNames] = useState(['Équipe 1', 'Équipe 2']);
 
     return (
         <TeamContext.Provider value={{ teamNames, setTeamNames }}>
-        <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/team-selection" element={<TeamSelectionPage />} />
-            <Route path="/fonts" element={<Typo/>} />
+            <Routes>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/team-selection" element={<TeamSelectionPage />} />
+                <Route path="/fonts" element={<Typo/>} />
             </Routes>
         </TeamContext.Provider>
   );
