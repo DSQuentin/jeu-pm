@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import data from "../posters.json";
-import Timer from "./Timer";
-import EndGameButtons from "./EndGameButtons";
+import RoundsRemaining from "./RoundsRemaining";
+import LastRound from "./LastRound";
+import { Link } from "react-router-dom";
 
 function Posters() {
   const [images, setImages] = useState([]);
@@ -43,26 +44,21 @@ function Posters() {
             <br />1 , 2 ou 3 points en fonction de la difficulté.
           </p>{" "}
           <button onClick={handleNextClick}>Commencer</button>
+          <Link to="/menu">
+            <button>Retour à la sélection des jeux</button>
+          </Link>
         </>
       ) : imagesRemaining() > 0 ? (
-        <>
-          <p>Il reste {imagesRemaining()} images à trouver</p>
-          <img
-            src={currentImage}
-            alt={"Aléatoire " + (imagesRemaining() + 1)}
-          />
-          <Timer />
-          <button onClick={handleNextClick}>Suivant</button>
-        </>
+        <RoundsRemaining
+          roundsRemaining={imagesRemaining}
+          currentRound={currentImage}
+          handleNextClick={handleNextClick}
+        />
       ) : (
-        <>
-          <p>C'est la dernière manche !</p>
-          <img
-            src={currentImage}
-            alt={"Aléatoire " + (imagesRemaining() + 1)}
-          />
-          <EndGameButtons />
-        </>
+        <LastRound
+          roundsRemaining={imagesRemaining}
+          currentRound={currentImage}
+        />
       )}
     </div>
   );
