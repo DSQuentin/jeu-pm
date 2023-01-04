@@ -6,35 +6,45 @@ function Menu() {
   const { teamNames, totalScores } = useContext(TeamContext);
 
   return (
-    <div>
-      <h1>Menu de sélection</h1>
+    <div className="m-12 border-4 border-amber-500 rounded-lg bg-amber-400 p-8">
+      <h1 className="text-4xl text-center w-full mb-8">Sélection du jeux</h1>
       {teamNames.map((teamName, index) => (
-        <div key={index}>
+        <div key={index} className="text-xl w-full text-center">
           {teamName}: {totalScores[index]} points
         </div>
       ))}
-      <div>
-        <h2>Sélection du jeux</h2>
+      <div className="flex justify-evenly mx-56 mt-12 mb-4">
         <Link to="/fonts">
           {" "}
-          <button>Police d'écriture</button>
+          <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
+            Police d'écriture
+          </button>
         </Link>
         <Link to="/posters">
           {" "}
-          <button>Affiches de films</button>
+          <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
+            Affiches de films
+          </button>
         </Link>
         <Link to="/musiques">
           {" "}
-          <button>Musiques</button>
+          <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
+            Musiques
+          </button>
         </Link>
       </div>
-
-      <Link to="/scoreboard">
-        <button>Scoreboard</button>
-      </Link>
-      <Link to="/">
-        <button>Accueil</button>
-      </Link>
+      <div className="flex justify-evenly mx-96">
+        <Link to="/scoreboard">
+          <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2">
+            Scoreboard
+          </button>
+        </Link>
+        <Link to="/">
+          <button className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2 ml-1">
+            Accueil
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

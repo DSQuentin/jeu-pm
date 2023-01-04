@@ -23,17 +23,31 @@ function Timer() {
   }
 
   return (
-    <div>
+    <div className="flex justify-evenly mx-96">
       {!isRunning && seconds > 0 ? (
-        <button onClick={startTimer}>Lancer le timer</button>
+        <button
+          onClick={startTimer}
+          className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+        >
+          Lancer le timer
+        </button>
       ) : (
         <>
-          {seconds === 0 ? (
-            <p>Le temps est écoulé</p>
-          ) : (
-            <p>Il reste {seconds} secondes</p>
-          )}
-          {seconds === 0 && <button onClick={resetTimer}>Rénitialiser</button>}
+          <div className="flex flex-col">
+            {seconds === 0 ? (
+              <p className="mt-2 text-xl">Le temps est écoulé !</p>
+            ) : (
+              <p>Il reste {seconds} secondes</p>
+            )}
+            {seconds === 0 && (
+              <button
+                onClick={resetTimer}
+                className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
+              >
+                Rénitialiser
+              </button>
+            )}
+          </div>
         </>
       )}
     </div>
