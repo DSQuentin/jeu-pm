@@ -7,6 +7,7 @@ import Menu from './components/Menu.jsx';
 import Typo from './components/Typo.jsx';
 import TeamSelectionPage from './components/TeamSelection.jsx';
 import Scoreboard from './components/Scoreboard.jsx';
+import Posters from './components/Posters.jsx';
 
 function App() {
   const [teamNames, setTeamNames] = useState(['Équipe 1', 'Équipe 2']);
@@ -21,7 +22,8 @@ function App() {
         <Route path="/team-selection" element={<TeamSelectionPage />} />
         <Route path="/fonts" element={<Typo />} />
         <Route path="*" element={<div>404</div>} />
-        <Route path="/scoreboard" element={<Scoreboard />} />
+              <Route path="/scoreboard" element={<Scoreboard />} />
+                <Route path="/posters" element={<Posters />} />
       </Routes>
     </TeamContext.Provider>
   );

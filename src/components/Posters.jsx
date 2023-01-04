@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import data from "../typos.json";
+import data from "../posters.json";
 import Timer from "./Timer";
 import EndGameButtons from "./EndGameButtons";
 
-function Typo() {
+function Posters() {
   const [images, setImages] = useState([]);
   const [selectedImages, setSelectedImages] = useState([]);
   const [currentImage, setCurrentImage] = useState("");
@@ -35,13 +35,12 @@ function Typo() {
     <div>
       {imagesRemaining() === images.length ? (
         <>
-          <h1>Devine le film dont est issue la police d'écriture</h1>
+          <h1>Devine le film dont est issue l'affiche</h1>
           <h2>Les règles</h2>
           <p>
-            Une mot ou une phrase va apparaître à l'écran, il faudra retrouver
-            le film auquel appartient la « police d'écriture ». <br />{" "}
-            Attention, le mot ou la phrase n'a strictement (ou pas) rien à voir
-            avec le film ! <br />1 , 2 ou 3 points en fonction de la difficulté.
+            Une affiche minimaliste va apparaître à l'écran, il faudra retrouver
+            le film auquel appartient l'affiche.
+            <br />1 , 2 ou 3 points en fonction de la difficulté.
           </p>{" "}
           <button onClick={handleNextClick}>Commencer</button>
         </>
@@ -51,8 +50,8 @@ function Typo() {
           <img
             src={currentImage}
             alt={"Aléatoire " + (imagesRemaining() + 1)}
-                      />
-            <Timer />
+          />
+          <Timer />
           <button onClick={handleNextClick}>Suivant</button>
         </>
       ) : (
@@ -69,4 +68,4 @@ function Typo() {
   );
 }
 
-export default Typo;
+export default Posters;

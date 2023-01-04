@@ -18,8 +18,11 @@ function Menu() {
         <Link to="/fonts">
           {" "}
           <button>Police d'écriture</button>
-              </Link>
-              <button>Affiches de films</button>
+        </Link>
+        <Link to="/posters">
+          {" "}
+          <button>Affiches de films</button>
+        </Link>
       </div>
 
       <Link to="/scoreboard">
