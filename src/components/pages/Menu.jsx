@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import TeamContext from "../TeamContext";
+import TeamContext from "../utils/TeamContext";
 
 function Menu() {
   const { teamNames, totalScores } = useContext(TeamContext);
@@ -22,6 +22,10 @@ function Menu() {
         <Link to="/posters">
           {" "}
           <button>Affiches de films</button>
+        </Link>
+        <Link to="/musiques">
+          {" "}
+          <button>Musiques</button>
         </Link>
       </div>
 

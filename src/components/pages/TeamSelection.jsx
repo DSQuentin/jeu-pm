@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import TeamContext from '../TeamContext';
+import TeamContext from '../utils/TeamContext';
 import { Link } from 'react-router-dom';
 
 function TeamSelectionPage() {

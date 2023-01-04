@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import data from "../typos.json";
-import RoundsRemaining from "./RoundsRemaining";
-import LastRound from "./LastRound";
+import postersData from "../../posters.json";
+import typosData from "../../typos.json";
+import RoundsRemaining from "../utils/RoundsRemaining";
+import LastRound from "../utils/LastRound";
 import { Link } from "react-router-dom";
 
-function Typo() {
+function GameWithPictures({ gameType }) {
   const [rounds, setRounds] = useState([]);
   const [selectedRounds, setSelectedRounds] = useState([]);
   const [currentRound, setCurrentRound] = useState("");
@@ -15,7 +16,11 @@ function Typo() {
   }, []);
 
   const fetchRounds = () => {
-    setRounds(Object.values(data));
+    if (gameType === "posters") {
+      setRounds(Object.values(postersData));
+    } else if (gameType === "typos") {
+      setRounds(Object.values(typosData));
+    }
     setCurrentRound(rounds[0]); // définir la première round du tableau comme round par défaut
   };
 
@@ -36,31 +41,47 @@ function Typo() {
     <div>
       {roundsRemaining() === rounds.length ? (
         <>
-          <h1>Devine le film dont est issue la police d'écriture</h1>
+          {gameType === "posters" ? (
+            <h1>Devine le film dont est issue l'affiche</h1>
+          ) : (
+            <h1>Devine le film dont est issue la police d'écriture</h1>
+          )}
           <h2>Les règles</h2>
-          <p>
-            Une mot ou une phrase va apparaître à l'écran, il faudra retrouver
-            le film auquel appartient la « police d'écriture ». <br />{" "}
-            Attention, le mot ou la phrase n'a strictement (ou pas) rien à voir
-            avec le film ! <br />1 , 2 ou 3 points en fonction de la difficulté.
-          </p>{" "}
+          {gameType === "posters" ? (
+            <p>
+              Une affiche minimaliste va apparaître à l'écran, il faudra
+              retrouver le film auquel appartient l'affiche.
+              <br />1 , 2 ou 3 points en fonction de la difficulté.
+            </p>
+          ) : (
+            <p>
+              Un texte va apparaître à l'écran avec une police d'écriture venant
+              d'une affiche de film. Il faudra retrouver le film auquel
+              appartient la police d'écriture.
+              <br />1 , 2 ou 3 points en fonction de la difficulté.
+            </p>
+          )}
           <button onClick={handleNextClick}>Commencer</button>
-          <Link to="/menu">Retour à la sélection des jeux</Link>
+          <Link to="/menu">
+            <button>Retour à la sélection des jeux</button>
+          </Link>
         </>
       ) : roundsRemaining() > 0 ? (
         <RoundsRemaining
           roundsRemaining={roundsRemaining}
           currentRound={currentRound}
           handleNextClick={handleNextClick}
+          gameType={gameType}
         />
       ) : (
         <LastRound
           roundsRemaining={roundsRemaining}
           currentRound={currentRound}
+          gameType={gameType}
         />
       )}
     </div>
   );
 }
 
-export default Typo;
+export default GameWithPictures;

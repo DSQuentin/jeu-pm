@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import TeamContext from '../TeamContext';
+import TeamContext from '../utils/TeamContext';
 
 function Scoreboard() {
   const { teamNames, scores, setScores, totalScores, setTotalScores } = useContext(TeamContext);
