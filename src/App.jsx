@@ -7,6 +7,7 @@ import TeamSelectionPage from "./components/pages/TeamSelection.jsx";
 import Scoreboard from "./components/pages/Scoreboard.jsx";
 import GameWithPictures from "./components/pages/GameWithPictures.jsx";
 import Musiques from "./components/pages/Musiques.jsx";
+import Actors from "./components/pages/Actors.jsx";
 
 function App() {
   const [teamNames, setTeamNames] = useState(["Équipe 1", "Équipe 2"]);
@@ -38,7 +39,8 @@ function App() {
           path="/posters"
           element={<GameWithPictures gameType={"posters"} />}
         />
-        <Route path="/musiques" element={<Musiques />} />
+              <Route path="/musiques" element={<Musiques />} />
+                <Route path="/acteurs" element={<Actors />} />
       </Routes>
     </TeamContext.Provider>
   );

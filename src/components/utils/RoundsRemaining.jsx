@@ -6,7 +6,7 @@ function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
   return (
     <>
       <p className="text-4xl w-full text-center my-4">
-        Il reste {roundsRemaining()} images à trouver
+        Il reste {roundsRemaining()} manches
       </p>
       <img
         src={currentRound}
