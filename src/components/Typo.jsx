@@ -28,46 +28,47 @@ function Typo() {
 
   useEffect(() => {
     setCurrentImage(images[Math.floor(Math.random() * images.length)]);
-  }, []);
+  }, [images]);
 
   return (
     <div>
       {imagesRemaining() === images.length ? (
         <>
-          <h1>Les règles</h1>
+          <h1>Devine le film dont est issue la police d'écriture</h1>
+          <h2>Les règles</h2>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Consequuntur illum vero praesentium saepe minus quaerat at minima
-            ad. Quis tenetur unde nihil dignissimos placeat consectetur cum
-            voluptates quisquam aliquam voluptas. Numquam repellat cupiditate
-            laudantium consequuntur quo provident. Laudantium harum animi qui
-            fuga commodi modi. Quos saepe pariatur veritatis repudiandae
-            voluptate molestiae perspiciatis illo, quas facilis, quaerat veniam
-            non eius ratione. Exercitationem atque quam necessitatibus
-            consequuntur, quos, nam temporibus, velit eveniet earum dicta vitae
-            dolore a fugiat dolor commodi optio mollitia illum. Dicta,
-            repellendus quo ad blanditiis facere asperiores. Consequatur, porro.
+            Une mot ou une phrase va apparaître à l'écran, il faudra retrouver
+            le film auquel appartient la « police d'écriture ». <br />{" "}
+            Attention, le mot ou la phrase n'a strictement (ou pas) rien à voir
+            avec le film ! <br />1 , 2 ou 3 points en fonction de la difficulté.
           </p>{" "}
           <button onClick={handleNextClick}>Commencer</button>
         </>
       ) : imagesRemaining() > 0 ? (
         <>
           <p>Il reste {imagesRemaining()} images à trouver</p>
-          <img src={currentImage} alt="Image aléatoire" />
+          <img
+            src={currentImage}
+            alt={"Aléatoire " + (imagesRemaining() + 1)}
+          />
           <button onClick={handleNextClick}>Suivant</button>
         </>
       ) : (
-        <div>
-          {" "}
+        <>
           <p>C'est la dernière manche !</p>
-          <img src={currentImage} alt="Image aléatoire" />
+          <img
+            src={currentImage}
+            alt={"Aléatoire " + (imagesRemaining() + 1)}
+          />
+          <Link to="/scoreboard">
+            <button>Afficher le tableau des scores</button>
+          </Link>
           <Link to="/menu">
-            {" "}
             <button onClick={() => console.log("Retour au menu de sélection")}>
               Retour
             </button>
           </Link>
-        </div>
+        </>
       )}
     </div>
   );

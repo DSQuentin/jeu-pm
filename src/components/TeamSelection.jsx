@@ -20,7 +20,7 @@ function TeamSelectionPage() {
       <h1>Sélection de noms d'équipes</h1>
       {teamNames.map((teamName, index) => (
         <div key={index}>
-          <label htmlFor={`team-${index}`}>Équipe {index + 1}</label>
+          <label htmlFor={`team-${index}`}>Nom de l'équipe {index + 1}</label>
           <input
             id={`team-${index}`}
             value={teamName}
