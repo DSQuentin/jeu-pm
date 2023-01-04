@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import TeamContext from '../TeamContext';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import TeamContext from "../TeamContext";
 
 function Menu() {
-  const { teamNames, scores, totalScores } = useContext(TeamContext);
+  const { teamNames, totalScores } = useContext(TeamContext);
 
   return (
     <div>
@@ -13,8 +13,21 @@ function Menu() {
           {teamName}: {totalScores[index]} points
         </div>
       ))}
-      <Link to="/fonts"> <button>Police d'écriture</button></Link>
-      <Link to="/scoreboard"><button>Scoreboard</button></Link>
+      <div>
+        <h2>Sélection du jeux</h2>
+        <Link to="/fonts">
+          {" "}
+          <button>Police d'écriture</button>
+              </Link>
+              <button>Affiches de films</button>
+      </div>
+
+      <Link to="/scoreboard">
+        <button>Scoreboard</button>
+      </Link>
+      <Link to="/">
+        <button>Accueil</button>
+      </Link>
     </div>
   );
 }

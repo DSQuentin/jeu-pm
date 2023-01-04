@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import data from "../typos.json";
 import { Link } from "react-router-dom";
+import Timer from "./Timer";
 
 function Typo() {
   const [images, setImages] = useState([]);
@@ -50,7 +51,8 @@ function Typo() {
           <img
             src={currentImage}
             alt={"Aléatoire " + (imagesRemaining() + 1)}
-          />
+                      />
+            <Timer />
           <button onClick={handleNextClick}>Suivant</button>
         </>
       ) : (

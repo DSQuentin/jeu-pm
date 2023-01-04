@@ -16,16 +16,6 @@ function Scoreboard() {
     setTotalScores(newTotalScores);
   };
 
-  const handleAddPointsClick = (index) => {
-    const newScores = [...localScores];
-    newScores[index] += 1;
-    setLocalScores(newScores);
-    setScores(newScores); // update the scores in the context
-    const newTotalScores = [...totalScores];
-    newTotalScores[index] += 1; // update the total score for the team
-    setTotalScores(newTotalScores);
-  };
-
   return (
     <div>
       <h1>Scoreboard</h1>
