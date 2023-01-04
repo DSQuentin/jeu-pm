@@ -5,36 +5,36 @@ import LastRound from "./LastRound";
 import { Link } from "react-router-dom";
 
 function Typo() {
-  const [images, setImages] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [currentImage, setCurrentImage] = useState("");
-  const imagesRemaining = () => images.length - selectedImages.length;
+  const [rounds, setRounds] = useState([]);
+  const [selectedRounds, setSelectedRounds] = useState([]);
+  const [currentRound, setCurrentRound] = useState("");
+  const roundsRemaining = () => rounds.length - selectedRounds.length;
 
   useEffect(() => {
-    fetchImages();
+    fetchRounds();
   }, []);
 
-  const fetchImages = () => {
-    setImages(Object.values(data));
-    setCurrentImage(images[0]); // définir la première image du tableau comme image par défaut
+  const fetchRounds = () => {
+    setRounds(Object.values(data));
+    setCurrentRound(rounds[0]); // définir la première round du tableau comme round par défaut
   };
 
   const handleNextClick = () => {
-    let image = images[Math.floor(Math.random() * images.length)];
-    while (selectedImages.includes(image)) {
-      image = images[Math.floor(Math.random() * images.length)];
+    let round = rounds[Math.floor(Math.random() * rounds.length)];
+    while (selectedRounds.includes(round)) {
+      round = rounds[Math.floor(Math.random() * rounds.length)];
     }
-    setCurrentImage(image);
-    setSelectedImages([...selectedImages, image]);
+    setCurrentRound(round);
+    setSelectedRounds([...selectedRounds, round]);
   };
 
   useEffect(() => {
-    setCurrentImage(images[Math.floor(Math.random() * images.length)]);
-  }, [images]);
+    setCurrentRound(rounds[Math.floor(Math.random() * rounds.length)]);
+  }, [rounds]);
 
   return (
     <div>
-      {imagesRemaining() === images.length ? (
+      {roundsRemaining() === rounds.length ? (
         <>
           <h1>Devine le film dont est issue la police d'écriture</h1>
           <h2>Les règles</h2>
@@ -47,14 +47,17 @@ function Typo() {
           <button onClick={handleNextClick}>Commencer</button>
           <Link to="/menu">Retour à la sélection des jeux</Link>
         </>
-      ) : imagesRemaining() > 0 ? (
+      ) : roundsRemaining() > 0 ? (
         <RoundsRemaining
-          roundsRemaining={imagesRemaining}
-          currentRound={currentImage}
+          roundsRemaining={roundsRemaining}
+          currentRound={currentRound}
           handleNextClick={handleNextClick}
         />
       ) : (
-        <LastRound roundsRemaining={imagesRemaining} currentRound={currentImage} />
+        <LastRound
+          roundsRemaining={roundsRemaining}
+          currentRound={currentRound}
+        />
       )}
     </div>
   );
