@@ -5,7 +5,7 @@ import RoundsRemaining from "../utils/RoundsRemaining";
 import LastRound from "../utils/LastRound";
 import { Link } from "react-router-dom";
 
-function GameWithPictures({ gameType }) {
+export default function GameWithPictures({ gameType }) {
   const [rounds, setRounds] = useState([]);
   const [selectedRounds, setSelectedRounds] = useState([]);
   const [currentRound, setCurrentRound] = useState("");
@@ -96,5 +96,3 @@ function GameWithPictures({ gameType }) {
     </div>
   );
 }
-
-export default GameWithPictures;

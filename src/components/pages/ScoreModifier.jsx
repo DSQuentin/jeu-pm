@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import TeamContext from "../utils/TeamContext";
 
-function Scoreboard() {
+export default function ScoreModifier() {
   const { teamNames, scores, setScores, totalScores, setTotalScores } =
     useContext(TeamContext);
   const [localScores, setLocalScores] = useState(scores); // initialize local scores to the scores from the context
@@ -19,7 +19,7 @@ function Scoreboard() {
 
   return (
     <div className="m-12 border-4 border-amber-500 rounded-lg bg-amber-400 p-8">
-      <h1 className="text-4xl text-center w-full mb-8">Scoreboard</h1>
+      <h1 className="text-4xl text-center w-full mb-8">Modifier le score</h1>
       {teamNames.map((teamName, index) => (
         <div key={index} className="border-amber-200 border-2 my-8 py-4 px-2 rounded-xl">
           <div>
@@ -55,5 +55,3 @@ function Scoreboard() {
     </div>
   );
 }
-
-export default Scoreboard;

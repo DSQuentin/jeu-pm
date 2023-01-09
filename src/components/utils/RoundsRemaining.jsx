@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Scoreboard from "./Scoreboard";
 import Timer from "./Timer";
 
-function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
+export default function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
   return (
     <>
       <p className="text-4xl w-full text-center my-4">
@@ -13,7 +14,8 @@ function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
         alt={"Aléatoire " + (roundsRemaining() + 1)}
         className="mx-auto border-4 border-amber-500 rounded-lg h-80 w-auto"
       />
-      <Timer />
+          <Timer />
+          <Scoreboard/>
       <div className="flex justify-evenly mx-96">
         <button
           onClick={handleNextClick}
@@ -30,5 +32,3 @@ function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
     </>
   );
 }
-
-export default RoundsRemaining;

@@ -4,12 +4,12 @@ import TeamContext from "./components/utils/TeamContext.jsx";
 import Home from "./components/pages/Home.jsx";
 import Menu from "./components/pages/Menu.jsx";
 import TeamSelectionPage from "./components/pages/TeamSelection.jsx";
-import Scoreboard from "./components/pages/Scoreboard.jsx";
+import ScoreModifier from "./components/pages/ScoreModifier.jsx";
 import GameWithPictures from "./components/pages/GameWithPictures.jsx";
 import Musiques from "./components/pages/Musiques.jsx";
 import Actors from "./components/pages/Actors.jsx";
 
-function App() {
+export default function App() {
   const [teamNames, setTeamNames] = useState(["Équipe 1", "Équipe 2"]);
   const [scores, setScores] = useState(teamNames.map(() => 0)); // initialize scores to 0 for each team
   const [totalScores, setTotalScores] = useState(teamNames.map(() => 0)); // initialize total scores to 0 for each team
@@ -34,16 +34,14 @@ function App() {
           element={<GameWithPictures gameType={"typos"} />}
         />
         <Route path="*" element={<div>404</div>} />
-        <Route path="/scoreboard" element={<Scoreboard />} />
+        <Route path="/scoreboard-modifier" element={<ScoreModifier />} />
         <Route
           path="/posters"
           element={<GameWithPictures gameType={"posters"} />}
         />
-              <Route path="/musiques" element={<Musiques />} />
-                <Route path="/acteurs" element={<Actors />} />
+        <Route path="/musiques" element={<Musiques />} />
+              <Route path="/acteurs" element={<Actors />} />
       </Routes>
     </TeamContext.Provider>
   );
 }
-
-export default App;
