@@ -39,7 +39,7 @@ export default function App() {
           path="/posters"
           element={<GameWithPictures gameType={"posters"} />}
         />
-        <Route path="/musiques" element={<Musiques />} />
+        <Route path="/musiques" element={<Musiques gameType={"musiques"} />} />
         <Route path="/acteurs" element={<Actors />} />
       </Routes>
     </TeamContext.Provider>
