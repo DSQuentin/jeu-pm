@@ -8,18 +8,31 @@ export default function RoundsRemaining({
   handleNextClick,
   gameType,
   handlePlayPause,
+  playing,
 }) {
   return (
     <>
       <p className="text-4xl w-full text-center my-4">
         Il reste {roundsRemaining()} manches
       </p>
-
-      <img
-        src={currentRound.image}
-        alt={currentRound.title}
-        className="mx-auto border-4 border-amber-500 rounded-lg h-80 w-auto"
-      />
+      {gameType === "musiques" ? (
+        <div className="flex justify-center">
+          <audio
+            src={currentRound.file}
+            controls
+            autoPlay
+            onPlay={handlePlayPause}
+            onPause={handlePlayPause}
+          />
+          {playing ? <p>Playing</p> : <p>Paused</p>}
+        </div>
+      ) : (
+        <img
+          src={currentRound.image}
+          alt={currentRound.title}
+          className="mx-auto border-4 border-amber-500 rounded-lg h-80 w-auto"
+        />
+      )}
 
       <Timer />
       <div className="flex justify-evenly mx-96">

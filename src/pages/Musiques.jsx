@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { musics as musicsData } from "../components/data/musics.js";
-import { Link } from "react-router-dom";
 import RoundsRemaining from "../components/utils/RoundsRemaining.jsx";
 import LastRound from "../components/utils/LastRound.jsx";
 
@@ -12,14 +11,7 @@ export default function Musiques({ gameType }) {
   const roundsRemaining = () => rounds.length - selectedRounds.length;
 
   const handlePlayPause = () => {
-    const audioEl = document.getElementById("audio");
-    if (playing) {
-      audioEl.pause();
-      setPlaying(false);
-    } else {
-      audioEl.play();
-      setPlaying(true);
-    }
+    setPlaying(!playing);
   };
 
   useEffect(() => {
