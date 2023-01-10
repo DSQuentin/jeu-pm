@@ -14,8 +14,8 @@ export default function RulesCarousel() {
         secondes sans que la première équipe puisse intervenir. A
         la fin du décompte des 10 secondes, la Règle 2 reprend ses
         droits.`,
-    `L'arbitre a tous les droits Tutututu, je
-        ne veux pas le savoir. Je décide.`,
+    `L'arbitre tous les droits aura !
+        Tutututu, je ne veux pas le savoir. Je décide. `,
     `Trop chiant (ou fort) tu es, puni tu
         seras! Pour tous les joueurs enfreignant les règles, un
         handicap sera donné par l'arbitre (Va participer au jeu

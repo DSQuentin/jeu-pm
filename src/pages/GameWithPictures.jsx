@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { posters as postersData } from "../components/data/posters.js";
 import { typos as typosData } from "../components/data/typos.js";
@@ -55,14 +56,12 @@ export default function GameWithPictures({ gameType }) {
             <p className="w-full text-center my-2 text-xl">
               Une affiche minimaliste va apparaître à l'écran, il faudra
               retrouver le film auquel appartient l'affiche.
-              <br />1 , 2 ou 3 points en fonction de la difficulté.
             </p>
           ) : (
             <p className="w-full text-center my-2 text-xl">
               Un texte va apparaître à l'écran avec une police d'écriture venant
               d'une affiche de film. Il faudra retrouver le film auquel
               appartient la police d'écriture.
-              <br />1 , 2 ou 3 points en fonction de la difficulté.
             </p>
           )}
           <div className="flex justify-evenly mx-96">
@@ -84,6 +83,7 @@ export default function GameWithPictures({ gameType }) {
           roundsRemaining={roundsRemaining}
           currentRound={currentRound}
           handleNextClick={handleNextClick}
+          selectedRounds={selectedRounds}
           gameType={gameType}
         />
       ) : (

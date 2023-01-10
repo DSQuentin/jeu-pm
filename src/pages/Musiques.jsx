@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { musics as musicsData } from "../components/data/musics.js";
 import RoundsRemaining from "../components/utils/RoundsRemaining.jsx";
@@ -47,7 +48,6 @@ export default function Musiques({ gameType }) {
           <p className="w-full text-center my-2 text-xl">
             Une musique minimaliste va apparaître à l'écran, il faudra retrouver
             le film auquel appartient la musique.
-            <br />1 , 2 ou 3 points en fonction de la difficulté.
           </p>
           <button
             className="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-full my-4"
