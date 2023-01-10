@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Timer() {
+export default function Timer() {
   const [seconds, setSeconds] = useState(10);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -53,5 +53,3 @@ function Timer() {
     </div>
   );
 }
-
-export default Timer;

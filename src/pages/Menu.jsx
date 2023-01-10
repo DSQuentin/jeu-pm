@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import TeamContext from "../utils/TeamContext";
+import TeamContext from "../components/utils/TeamContext";
 
 export default function Menu() {
   const { teamNames, totalScores } = useContext(TeamContext);

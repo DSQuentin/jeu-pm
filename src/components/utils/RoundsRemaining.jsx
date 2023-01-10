@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Scoreboard from "./Scoreboard";
 import Timer from "./Timer";
 
-export default function RoundsRemaining({ currentRound, roundsRemaining, handleNextClick }) {
+export default function RoundsRemaining({
+  currentRound,
+  roundsRemaining,
+  handleNextClick,
+}) {
   return (
     <>
       <p className="text-4xl w-full text-center my-4">
         Il reste {roundsRemaining()} manches
       </p>
       <img
-        src={currentRound}
-        alt={"Aléatoire " + (roundsRemaining() + 1)}
+        src={currentRound.image}
+        alt={currentRound.title}
         className="mx-auto border-4 border-amber-500 rounded-lg h-80 w-auto"
       />
-          <Timer />
-          <Scoreboard/>
+      <Timer />
       <div className="flex justify-evenly mx-96">
         <button
           onClick={handleNextClick}

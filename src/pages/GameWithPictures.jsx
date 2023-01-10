@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import postersData from "../../data/posters.json";
-import typosData from "../../data/typos.json";
-import RoundsRemaining from "../utils/RoundsRemaining";
-import LastRound from "../utils/LastRound";
+import { posters as postersData } from "../components/data/posters.js";
+import { typos as typosData } from "../components/data/typos.js";
+import RoundsRemaining from "../components/utils/RoundsRemaining";
+import LastRound from "../components/utils/LastRound";
 import { Link } from "react-router-dom";
 
 export default function GameWithPictures({ gameType }) {
@@ -87,11 +87,7 @@ export default function GameWithPictures({ gameType }) {
           gameType={gameType}
         />
       ) : (
-        <LastRound
-          roundsRemaining={roundsRemaining}
-          currentRound={currentRound}
-          gameType={gameType}
-        />
+        <LastRound currentRound={currentRound} gameType={gameType} />
       )}
     </div>
   );

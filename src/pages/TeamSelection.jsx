@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import TeamContext from "../utils/TeamContext";
+import TeamContext from "../components/utils/TeamContext";
 import { Link } from "react-router-dom";
 
-function TeamSelectionPage() {
+export default function TeamSelectionPage() {
   const { teamNames, setTeamNames } = useContext(TeamContext);
 
   const handleTeamNameChange = (event, index) => {
@@ -63,5 +63,3 @@ function TeamSelectionPage() {
     </div>
   );
 }
-
-export default TeamSelectionPage;

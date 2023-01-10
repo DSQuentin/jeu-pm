@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import TeamContext from "./components/utils/TeamContext.jsx";
-import Home from "./components/pages/Home.jsx";
-import Menu from "./components/pages/Menu.jsx";
-import TeamSelectionPage from "./components/pages/TeamSelection.jsx";
-import ScoreModifier from "./components/pages/ScoreModifier.jsx";
-import GameWithPictures from "./components/pages/GameWithPictures.jsx";
-import Musiques from "./components/pages/Musiques.jsx";
-import Actors from "./components/pages/Actors.jsx";
+import Home from "./pages/Home.jsx";
+import Menu from "./pages/Menu.jsx";
+import TeamSelectionPage from "./pages/TeamSelection.jsx";
+import ScoreModifier from "./pages/ScoreModifier.jsx";
+import GameWithPictures from "./pages/GameWithPictures.jsx";
+import Musiques from "./pages/Musiques.jsx";
+import Actors from "./pages/Actors.jsx";
 
 export default function App() {
   const [teamNames, setTeamNames] = useState(["Équipe 1", "Équipe 2"]);
@@ -40,7 +40,7 @@ export default function App() {
           element={<GameWithPictures gameType={"posters"} />}
         />
         <Route path="/musiques" element={<Musiques />} />
-              <Route path="/acteurs" element={<Actors />} />
+        <Route path="/acteurs" element={<Actors />} />
       </Routes>
     </TeamContext.Provider>
   );
