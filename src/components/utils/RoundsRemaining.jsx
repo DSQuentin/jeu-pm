@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Timer from "./Timer";
-import axios from "axios";
 
 export default function RoundsRemaining({
   currentRound,
@@ -9,7 +8,6 @@ export default function RoundsRemaining({
   handleNextClick,
   gameType,
   handlePlayPause,
-  selectedRounds,
 }) {
   /*   const [showAnswer, setShowAnswer] = useState(false);
   const [movie, setMovie] = useState({}); */
