@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import TeamContext from "../components/utils/TeamContext";
+import { buttonStyle, mainDivStyle } from "../styles/styles";
 
 export default function ScoreModifier() {
   const { teamNames, scores, setScores, totalScores, setTotalScores } =
@@ -18,7 +19,7 @@ export default function ScoreModifier() {
   };
 
   return (
-    <div className="m-12 border-4 border-amber-500 rounded-lg bg-amber-400 p-8">
+    <div className={mainDivStyle}>
       <h1 className="text-4xl text-center w-full mb-8">Modifier le score</h1>
       {teamNames.map((teamName, index) => (
         <div
@@ -53,9 +54,7 @@ export default function ScoreModifier() {
         </div>
       ))}
       <Link to="/menu">
-        <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2 mx-4">
-          Retour
-        </button>
+        <button className={buttonStyle}>Retour</button>
       </Link>
     </div>
   );

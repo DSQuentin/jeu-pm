@@ -2,6 +2,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { actors as actorsData } from "../components/data/actors.js";
+import { Link } from "react-router-dom";
+import { buttonStyle, mainDivStyle } from "../styles/styles";
 
 const API_KEY = "2235deb68fa3aa47fd73e3361856c0e5";
 
@@ -95,7 +97,7 @@ export default function Actors() {
   }, [actorId]);
 
   return (
-    <div>
+    <div className={mainDivStyle}>
       {!gameStarted ? (
         <div>
           <h1>Donne un maximum de film dans lequel à jouer l'acteur</h1>
@@ -106,7 +108,16 @@ export default function Actors() {
             tout petit). Les doublages voix ne sont pas acceptés.
             <br />2 points par film
           </p>
-          <button onClick={handleNextClick}>Commencer</button>
+          <div className="flex justify-evenly mx-96 mt-12 relative">
+            <button onClick={handleNextClick} className={buttonStyle}>
+              Commencer
+            </button>
+            <Link to="/menu">
+              <button className={buttonStyle}>
+                Retour à la sélection des jeux
+              </button>
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="flex flex-col ">

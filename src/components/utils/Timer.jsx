@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { buttonStyle } from "../../styles/styles";
 
 export default function Timer() {
   const [seconds, setSeconds] = useState(10);
@@ -23,27 +24,21 @@ export default function Timer() {
   }
 
   return (
-    <div className="flex justify-evenly mx-96">
+    <div className="mx-auto">
       {!isRunning && seconds > 0 ? (
-        <button
-          onClick={startTimer}
-          className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
-        >
+        <button onClick={startTimer} className={buttonStyle}>
           Lancer le timer
         </button>
       ) : (
         <>
-          <div className="flex flex-col">
+          <div className="mx-auto my-4">
             {seconds === 0 ? (
-              <p className="mt-2 text-xl">Le temps est écoulé !</p>
+              <p>Le temps est écoulé !</p>
             ) : (
               <p>Il reste {seconds} secondes</p>
             )}
             {seconds === 0 && (
-              <button
-                onClick={resetTimer}
-                className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 mt-2"
-              >
+              <button onClick={resetTimer} className={buttonStyle}>
                 Rénitialiser
               </button>
             )}

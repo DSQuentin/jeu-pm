@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { musics as musicsData } from "../components/data/musics.js";
 import RoundsRemaining from "../components/utils/RoundsRemaining.jsx";
 import LastRound from "../components/utils/LastRound.jsx";
+import { buttonStyle, mainDivStyle } from "../styles/styles.jsx";
+import { Link } from "react-router-dom";
 
 export default function Musiques({ gameType }) {
   const [rounds, setRounds] = useState([]);
@@ -38,7 +40,7 @@ export default function Musiques({ gameType }) {
   }, [rounds]);
 
   return (
-    <div className="m-12 border-4 border-amber-500 rounded-lg bg-amber-400 p-8">
+    <div className={mainDivStyle}>
       {roundsRemaining() === rounds.length ? (
         <>
           <h1 className="text-4xl text-center w-full mb-8">
@@ -49,12 +51,16 @@ export default function Musiques({ gameType }) {
             Une musique minimaliste va apparaître à l'écran, il faudra retrouver
             le film auquel appartient la musique.
           </p>
-          <button
-            className="bg-amber-500 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-full my-4"
-            onClick={handleNextClick}
-          >
-            Commencer
-          </button>
+          <div className="flex justify-evenly mx-96 mt-12 relative">
+            <button onClick={handleNextClick} className={buttonStyle}>
+              Commencer
+            </button>
+            <Link to="/menu">
+              <button className={buttonStyle}>
+                Retour à la sélection des jeux
+              </button>
+            </Link>
+          </div>
         </>
       ) : roundsRemaining() > 0 ? (
         <RoundsRemaining

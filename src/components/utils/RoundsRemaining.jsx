@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Penalty from "./Penalty";
 import Timer from "./Timer";
+import { buttonStyle } from "../../styles/styles";
 
 export default function RoundsRemaining({
   currentRound,
@@ -25,26 +26,36 @@ export default function RoundsRemaining({
           />
         </div>
       ) : (
-        <img
-          src={currentRound.image}
-          alt={currentRound.title}
-          className="mx-auto border-4 border-amber-500 rounded-lg h-80 w-auto"
-        />
+        <>
+          {gameType === "posters" ? (
+            <img
+              src={currentRound.image}
+              alt={currentRound.title}
+              className="mx-auto border-4 border-sunray rounded-lg w-auto h-[34rem]"
+            />
+          ) : (
+            <img
+              src={currentRound.image}
+              alt={currentRound.title}
+              className="mx-auto border-4 border-sunray rounded-lg w-auto h-[20rem] mt-24"
+            />
+          )}
+        </>
       )}
+      <div className="absolute top-24 left-24 flex flex-col">
+        <Timer />
+        <Penalty />
+      </div>
+      <div className="absolute top-24 right-24">
+        <p>Scoreboard</p>
+      </div>
 
-      <Timer />
-      <Penalty />
-      <div className="flex justify-evenly mx-96">
-        <button
-          onClick={handleNextClick}
-          className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
-        >
+      <div className="flex justify-center mx-96 mt-4">
+        <button onClick={handleNextClick} className={buttonStyle}>
           Suivant
         </button>
         <Link to="/menu">
-          <button className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2 ml-1">
-            Menu
-          </button>
+          <button className={buttonStyle}>Menu</button>
         </Link>
       </div>
     </>
