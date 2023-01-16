@@ -9,7 +9,7 @@ export default function Actors() {
   const [actorId, setActorId] = useState();
   const [selectedActors, setSelectedActors] = useState([]);
   const [actorMovies, setActorMovies] = useState([]);
-  const [currentActor, setCurrentActor] = useState(null);
+  const [currentActor, setCurrentActor] = useState("Chargement");
   const [gameStarted, setGameStarted] = useState(false);
 
   const roundsRemaining = () => actors.length - selectedActors.length;
@@ -49,26 +49,28 @@ export default function Actors() {
   const displayActorMovies = () => {
     if (actorMovies) {
       return (
-        <div className="w-full flex flex-col">
+        <div className="flex">
+          <h2>Acteur en cours: {currentActor}</h2>
+          <div>Nombre d'acteurs restant: {roundsRemaining()}</div>
           <div>
-            <h2>Acteur en cours: {currentActor}</h2>
-            <div>Nombre d'acteurs restant: {roundsRemaining()}</div>
-            <div className="flex">
-              {" "}
-              {actorMovies.map((movie) => {
-                return <div>{movie.title}</div>;
-              })}
-            </div>
+            <ul>
+              {actorMovies.map((movie) => (
+                <li>{movie.title}</li>
+              ))}
+            </ul>
           </div>
-          <button onClick={handleNextClick}>Acteur suivant</button>
+          <button
+            className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-2"
+            onClick={handleNextClick}
+          >
+            Acteur suivant
+          </button>
         </div>
       );
     } else {
       return (
         <>
-          {" "}
-          <div>Chargement des films...</div>
-          <button onClick={handleNextClick}>Charger</button>
+          <div>Chargement des films</div>
         </>
       );
     }
@@ -91,6 +93,10 @@ export default function Actors() {
     await fetchActorMovies();
   };
 
+  useEffect(() => {
+    fetchActorMovies();
+  }, [actorId]);
+
   return (
     <div>
       {!gameStarted ? (
@@ -106,7 +112,9 @@ export default function Actors() {
           <button onClick={handleNextClick}>Commencer</button>
         </div>
       ) : (
-        <div className="flex flex-col ">{displayActorMovies()}</div>
+        <div className="flex flex-col ">
+          <div>{displayActorMovies()}</div>
+        </div>
       )}
     </div>
   );
