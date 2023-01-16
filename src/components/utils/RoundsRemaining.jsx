@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Penalty from "./Penalty";
 import Timer from "./Timer";
 
 export default function RoundsRemaining({
@@ -9,30 +10,6 @@ export default function RoundsRemaining({
   gameType,
   handlePlayPause,
 }) {
-  /*   const [showAnswer, setShowAnswer] = useState(false);
-  const [movie, setMovie] = useState({}); */
-
-  /*  const API_KEY = "2235deb68fa3aa47fd73e3361856c0e5";
-  const TMDBLINK =
-    "https://api.themoviedb.org/3/search/movie?api_key=" +
-    API_KEY +
-    "&language=fr-FR&query=" +
-    currentRound.title +
-    "&page=1&include_adult=false";
- */
-  /*   useEffect(() => {
-    if (showAnswer) {
-      axios
-        .get(TMDBLINK)
-        .then((response) => {
-          setMovie(response.data.results[0]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [showAnswer]); */
-
   return (
     <>
       <p className="text-4xl w-full text-center my-4">
@@ -56,6 +33,7 @@ export default function RoundsRemaining({
       )}
 
       <Timer />
+      <Penalty />
       <div className="flex justify-evenly mx-96">
         <button
           onClick={handleNextClick}

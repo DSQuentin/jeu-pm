@@ -23,7 +23,6 @@ export default function Actors() {
     setCurrentActor(actors[0]);
   };
 
-  //Fonction qui récupère les id des acteurs
   const fetchActorId = async (formattedActor) => {
     const actorData = await fetch(
       `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${formattedActor}`
@@ -34,7 +33,6 @@ export default function Actors() {
       });
   };
 
-  //Fonction qui récupère les films des acteurs
   const fetchActorMovies = async () => {
     const moviesData = await fetch(
       `https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=fr-FR`
@@ -45,7 +43,6 @@ export default function Actors() {
       });
   };
 
-  //Fonction qui affiche la liste des films des acteurs
   const displayActorMovies = () => {
     if (actorMovies) {
       return (
@@ -76,7 +73,6 @@ export default function Actors() {
     }
   };
 
-  // Fonction qui démarre le jeux et qui affiche les films des acteurs, et qui affiche déja le premier acteur
   const handleNextClick = async () => {
     if (!gameStarted) {
       setGameStarted(true);

@@ -2,28 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 body {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-
-.modal-animation-enter {
-    opacity: 0;
-  }
-  
-  .modal-animation-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  .modal-animation-exit {
-    opacity: 1;
-  }
-  
-  .modal-animation-exit-active {
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
-  }
-  
-  
