@@ -22,7 +22,7 @@ export default function GameWithPictures({ gameType }) {
     } else if (gameType === "typos") {
       setRounds(Object.values(typosData));
     }
-    setCurrentRound(rounds[0]); // définir la première round du tableau comme round par défaut
+    setCurrentRound(rounds[0]);
   };
 
   const handleNextClick = () => {
