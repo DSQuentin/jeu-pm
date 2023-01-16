@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Penalty from "./Penalty";
 import Timer from "./Timer";
+import ScoreModifier from "../../pages/ScoreModifier";
 import { buttonStyle } from "../../styles/styles";
 
 export default function RoundsRemaining({
@@ -17,12 +18,13 @@ export default function RoundsRemaining({
         Il reste {roundsRemaining()} manches
       </p>
       {gameType === "musiques" ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center my-8">
           <audio
             src={currentRound.file}
             controls
             onPlay={handlePlayPause}
             onPause={handlePlayPause}
+            className="w-2/5"
           />
         </div>
       ) : (
@@ -47,7 +49,7 @@ export default function RoundsRemaining({
         <Penalty />
       </div>
       <div className="absolute top-24 right-24">
-        <p>Scoreboard</p>
+        <ScoreModifier />
       </div>
 
       <div className="flex justify-center mx-96 mt-4">

@@ -11,7 +11,7 @@ export default function Menu() {
       <h1 className="text-4xl text-center w-full mb-8">Sélection du jeux</h1>
       {teamNames.map((teamName, index) => (
         <div key={index} className="text-xl w-full text-center">
-          {teamName}: {totalScores[index]} points
+          {teamName} : {totalScores[index]} points
         </div>
       ))}
       <div className="flex justify-evenly mx-56 mt-12 mb-4">
@@ -32,10 +32,7 @@ export default function Menu() {
           <button className={buttonStyle}>Acteurs</button>
         </Link>
       </div>
-      <div className="flex justify-evenly mx-96">
-        <Link to="/scoreboard-modifier">
-          <button className={buttonStyle}>Scoreboard</button>
-        </Link>
+      <div className="flex justify-evenly mx-auto">
         <Link to="/">
           <button className={buttonStyle}>Accueil</button>
         </Link>
