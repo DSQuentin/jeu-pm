@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import TeamContext from "../components/utils/TeamContext";
+import { inputLabelStyle } from "../styles/styles";
 
 export default function ScoreModifier() {
   const { teamNames, scores, setScores, totalScores, setTotalScores } =
@@ -17,17 +18,19 @@ export default function ScoreModifier() {
   };
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col content-end items-end">
       <h1 className="text-xl">Scores :</h1>
       {teamNames.map((teamName, index) => (
-        <div key={index} className="mx-auto my-1">
-          <label htmlFor={`score-${index}`}>{teamName}</label>
+        <div key={index} className="mx-auto my-1 flex justify-end items-center">
+          <label className="mr-2" htmlFor={`score-${index}`}>
+            {teamName}
+          </label>
           <input
             id={`score-${index}`}
             type="number"
             value={localScores[index]}
             onChange={(event) => handleScoreChange(event, index)}
-            className="ml-2 w-1/3 px-3 py-1 text-amber-700 bg-white bg-clip-padding border border-solid border-amber-300 rounded transition ease-in-out focus:text-amber-700 focus:bg-white focus:border-amber-500 focus:outline-none"
+            className={inputLabelStyle}
           />
         </div>
       ))}
