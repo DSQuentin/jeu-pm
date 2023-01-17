@@ -41,6 +41,11 @@ export default function Actors() {
       });
   };
 
+  function toggleSpanVisibility(i) {
+    const span = document.querySelector(`li:nth-child(${i + 1}) span`);
+    span.classList.toggle("visible");
+  }
+
   const displayActorMovies = () => {
     if (actorMovies) {
       return (
@@ -48,8 +53,13 @@ export default function Actors() {
           <h2>Acteur en cours: {selectedActor}</h2>
           <div>
             <ul>
-              {actorMovies.map((movie) => (
-                <li>{movie.title}</li>
+              {actorMovies.map((movie, i) => (
+                <li
+                  className="flex cursor-pointer px-4 py-2"
+                  onClick={() => toggleSpanVisibility(i)}
+                >
+                  {i} - <span>{movie.title}</span>
+                </li>
               ))}
             </ul>
           </div>
