@@ -24,7 +24,7 @@ export default function TeamSelectionPage() {
       {teamNames.map((teamName, index) => (
         <div
           key={index}
-          className=" flex flex-col items-center my-8 py-4 px-2 rounded-xl"
+          className=" flex flex-col items-center my-2 py-4 px-2 rounded-xl"
         >
           <label htmlFor={`team-${index}`}>Nom de l'équipe {index + 1}</label>
           <input
