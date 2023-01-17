@@ -5,6 +5,7 @@ import { actors as actorsData } from "../components/data/actors.js";
 import { Link } from "react-router-dom";
 import { buttonStyle, mainDivStyle, inputSelectStyle } from "../styles/styles";
 import ScoreModifier from "./ScoreModifier.jsx";
+import Penalty from "../components/utils/Penalty.jsx";
 
 const API_KEY = "2235deb68fa3aa47fd73e3361856c0e5";
 
@@ -14,6 +15,15 @@ export default function Actors() {
   const [selectedActor, setSelectedActor] = useState();
   const [actorMovies, setActorMovies] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+
+  const handleShowAllClick = () => {
+    setShowAll(!showAll);
+    const spans = document.querySelectorAll("span");
+    spans.forEach((span) => {
+      span.classList.add("visible");
+    });
+  };
 
   const handleChange = async (e) => {
     setActorMovies([]);
@@ -35,32 +45,52 @@ export default function Actors() {
   };
 
   const fetchActorMovies = async () => {
-    const moviesData = await fetch(
+    await fetch(
       `https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=fr-FR`
     )
       .then((res) => res.json())
       .then((data) => {
-        setActorMovies(data["cast"]);
+        const filteredMovies = data["cast"]
+          .filter((movie) => {
+            if (movie.title === "I Love L.A.") {
+              console.log(movie);
+            }
+            // 99 for documentaries, 16 for animation, 10402 for music, 10770 for TV movies
+            return (
+              !movie.genre_ids.includes(99) &&
+              !movie.genre_ids.includes(16) &&
+              !movie.genre_ids.includes(10402) &&
+              !movie.genre_ids.includes(10770) &&
+              !movie.character.includes("(voice)") &&
+              !movie.character.includes("(uncredited)") &&
+              !movie.character.includes("(archive footage)") &&
+              !movie.character.includes("(archive sound)")
+            );
+          })
+          .sort((a, b) => {
+            return new Date(b.release_date) - new Date(a.release_date);
+          });
+        setActorMovies(filteredMovies);
       });
   };
 
-  function toggleSpanVisibility(i) {
+  const toggleSpanVisibility = (i) => {
     const span = document.querySelector(`li:nth-child(${i + 1}) span`);
     span.classList.toggle("visible");
-  }
+  };
 
   const displayActorMovies = () => {
-    if (actorMovies) {
+    if (actorMovies && selectedActor) {
       return (
         <>
           <h2 className="text-center text-4xl mt-12">{selectedActor}</h2>
-          <ul className="movies-list mx-24 h-[60vh] border-4 border-red-500 rounded-lg mt-12 bg-gray-700">
+          <ul className="movies-list mx-24 h-[60vh] border-4 border-red-500 rounded-lg mt-12 bg-gray-700 py-2">
             {actorMovies.map((movie, i) => (
               <li
-                className="movie-item flex"
+                className="movie-item flex px-4"
                 onClick={() => toggleSpanVisibility(i)}
               >
-                {i + 1} - <span>{movie.title}</span>
+                {i + 1} - <span className="ml-1">{movie.title}</span>
               </li>
             ))}
           </ul>
@@ -114,6 +144,9 @@ export default function Actors() {
       ) : (
         <>
           {" "}
+          <div className="absolute top-6 left-10 flex flex-col">
+            <Penalty />
+          </div>
           <div className="absolute w-full top-24 left-12 flex flex-col">
             <select className={inputSelectStyle} onChange={handleChange}>
               <option value="Choisir un acteur" disabled selected>
@@ -132,6 +165,9 @@ export default function Actors() {
             <Link to="/menu">
               <button className={buttonStyle}>Menu</button>
             </Link>
+            <button className={buttonStyle} onClick={handleShowAllClick}>
+              Afficher tous
+            </button>
           </div>
         </>
       )}
