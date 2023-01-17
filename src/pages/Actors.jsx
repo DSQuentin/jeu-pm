@@ -56,12 +56,13 @@ export default function Actors() {
           <h2 className="text-center text-4xl mt-12">{selectedActor}</h2>
           <div
             className="mx-24 h-[60vh]
-                        flex flex-wrap border-2 border-red-500 mt-12 overflow-x-scroll bg-gray-700"
+                       border-2 border-red-500 rounded-lg mt-12 bg-gray-700
+                       grid grid-cols-auto-fill overflow-x-scroll divide-x-10"
           >
             <ul className="px-12">
               {actorMovies.map((movie, i) => (
                 <li
-                  className="flex cursor-pointer px-4 py-2"
+                  className="flex cursor-pointer px-4 my-2"
                   onClick={() => toggleSpanVisibility(i)}
                 >
                   {i + 1} - <span>{movie.title}</span>

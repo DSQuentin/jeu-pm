@@ -24,7 +24,7 @@ export default function RoundsRemaining({
             controls
             onPlay={handlePlayPause}
             onPause={handlePlayPause}
-            className="w-2/5"
+            className="w-2/5 mt-24"
           />
         </div>
       ) : (

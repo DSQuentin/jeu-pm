@@ -37,7 +37,7 @@ export default function RulesCarousel() {
           className="absolute -left-40 cursor-pointer bg-slate-100 rounded-full px-4 py-2 shadow-md shadow-red-500 border-white border-2"
           onClick={previousRule}
         >
-          <span>&#x3c;</span>
+          <div>&#x3c;</div>
         </div>
       )}
 
@@ -53,7 +53,7 @@ export default function RulesCarousel() {
           className="absolute -right-40 cursor-pointer bg-slate-100 rounded-full px-4 py-2 shadow-md shadow-red-500 border-white border-2"
           onClick={nextRule}
         >
-          <span>&#x3e;</span>
+          <div>&#x3e;</div>
         </div>
       )}
     </div>

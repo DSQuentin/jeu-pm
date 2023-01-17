@@ -16,6 +16,12 @@ export default function TeamSelectionPage() {
     setTeamNames([...teamNames, ""]);
   };
 
+  const handleDeleteTeam = (index) => {
+    const newTeamNames = [...teamNames];
+    newTeamNames.splice(index, 1);
+    setTeamNames(newTeamNames);
+  };
+
   return (
     <div className={mainDivStyle}>
       <h1 className="text-4xl text-center w-full mb-8">
@@ -27,12 +33,20 @@ export default function TeamSelectionPage() {
           className=" flex flex-col items-center my-2 py-4 px-2 rounded-xl"
         >
           <label htmlFor={`team-${index}`}>Nom de l'équipe {index + 1}</label>
-          <input
-            id={`team-${index}`}
-            value={teamName}
-            onChange={(event) => handleTeamNameChange(event, index)}
-            className={inputLabelStyle}
-          />
+          <div className="flex w-full justify-center">
+            <input
+              id={`team-${index}`}
+              value={teamName}
+              onChange={(event) => handleTeamNameChange(event, index)}
+              className={inputLabelStyle}
+            />
+            <button
+              onClick={() => handleDeleteTeam(index)}
+              className="text-red-500 hover:text-red-700 ml-2"
+            >
+              <div className=" font-extrabold">X</div>
+            </button>
+          </div>
         </div>
       ))}
       <div className=" flex justify-center ">

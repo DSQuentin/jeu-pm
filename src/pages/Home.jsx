@@ -29,9 +29,9 @@ export default function Home() {
           <Link to="/team-selection">
             <div className="mt-8">
               <button className="text-2xl sm:text-5xl font-black hover:opacity-100 wrapper group relative sm:opacity-80 mt-6 inline-block ">
-                <span className="group-hover:top-[-4px] relative top-0 transition-all duration-150 cursor-pointer">
+                <div className="group-hover:top-[-4px] relative top-0 transition-all duration-150 cursor-pointer">
                   Commencer
-                </span>
+                </div>
               </button>
             </div>
           </Link>
@@ -41,9 +41,9 @@ export default function Home() {
               className="text-xl sm:text-3xl font-semibold hover:opacity-100 wrapper group relative sm:opacity-80 mt-6 inline-block cursor-pointer md:mt-8"
               onClick={() => setIsModalOpen(true)}
             >
-              <span className="group-hover:top-[-4px] relative top-0 transition-all duration-150">
+              <div className="group-hover:top-[-4px] relative top-0 transition-all duration-150">
                 Les règles
-              </span>
+              </div>
             </span>
 
             <RulesModal
