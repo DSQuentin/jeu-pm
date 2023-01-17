@@ -15,3 +15,15 @@ body {
 span {
   display: none;
 }
+
+.movies-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid pink;
+  overflow-x: auto;
+}
+
+.movie-item {
+  width: 40%;
+}

@@ -54,22 +54,16 @@ export default function Actors() {
       return (
         <>
           <h2 className="text-center text-4xl mt-12">{selectedActor}</h2>
-          <div
-            className="mx-24 h-[60vh]
-                       border-2 border-red-500 rounded-lg mt-12 bg-gray-700
-                       grid grid-cols-auto-fill overflow-x-scroll divide-x-10"
-          >
-            <ul className="px-12">
-              {actorMovies.map((movie, i) => (
-                <li
-                  className="flex cursor-pointer px-4 my-2"
-                  onClick={() => toggleSpanVisibility(i)}
-                >
-                  {i + 1} - <span>{movie.title}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="movies-list mx-24 h-[60vh] border-4 border-red-500 rounded-lg mt-12 bg-gray-700">
+            {actorMovies.map((movie, i) => (
+              <li
+                className="movie-item flex"
+                onClick={() => toggleSpanVisibility(i)}
+              >
+                {i + 1} - <span>{movie.title}</span>
+              </li>
+            ))}
+          </ul>
         </>
       );
     } else {
