@@ -8,10 +8,12 @@ import ScoreModifier from "./ScoreModifier.jsx";
 import Penalty from "../components/utils/Penalty.jsx";
 
 const API_KEY = "2235deb68fa3aa47fd73e3361856c0e5";
+const URL_PIC = "https://image.tmdb.org/t/p/original/";
 
 export default function Actors() {
   const [actors, setActors] = useState(Object.values(actorsData));
   const [actorId, setActorId] = useState();
+  const [actorPicture, setActorPicture] = useState("");
   const [selectedActor, setSelectedActor] = useState();
   const [actorMovies, setActorMovies] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
@@ -42,6 +44,7 @@ export default function Actors() {
       )
     ).json();
     setActorId(actorData["results"][0]["id"]);
+    setActorPicture(actorData["results"][0]["profile_path"]);
   };
 
   const fetchActorMovies = async () => {
@@ -84,6 +87,14 @@ export default function Actors() {
       return (
         <>
           <h2 className="text-center text-4xl mt-12">{selectedActor}</h2>
+          <div className="w-screen absolute top-6 left-96">
+            <img
+              src={URL_PIC + actorPicture}
+              alt={selectedActor}
+              className="h-32 w-auto rounded-lg border-2 border-brickred"
+            />
+          </div>
+
           <ul className="movies-list mx-24 h-[60vh] border-4 border-red-500 rounded-lg mt-12 bg-gray-700 py-2">
             {actorMovies.map((movie, i) => (
               <li
